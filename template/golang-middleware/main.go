@@ -35,6 +35,20 @@ func main() {
 
 	http.HandleFunc("/", function.Handle)
 
+	/*
+	 * @dermatologist
+	 * This is for supporting the use of the container in kubeflow.
+	 * Implement the HandleFile function to support the use of the container in kubeflow.
+	 * The call without commandline parameters will run in the server model
+	 */
+	if len(os.Args) < 2 {
+		listenUntilShutdown(s, healthInterval, writeTimeout)
+	} else {
+		dat, _ := os.ReadFile(os.Args[1])
+		_dat := function.HandleFile(dat)
+		_ = os.WriteFile(os.Args[2], _dat, 0644)
+	}
+
 	listenUntilShutdown(s, healthInterval, writeTimeout)
 }
 
