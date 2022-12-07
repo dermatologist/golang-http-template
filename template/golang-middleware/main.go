@@ -46,7 +46,7 @@ func main() {
 	} else {
 		dat, _ := os.ReadFile(os.Args[1])
 		_dat := function.HandleFile(dat)
-		_ = os.WriteFile(os.Args[2], _dat, 0644)
+		_ = os.WriteFile(os.Args[2], _dat, 0777)
 	}
 }
 
