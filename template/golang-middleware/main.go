@@ -48,8 +48,6 @@ func main() {
 		_dat := function.HandleFile(dat)
 		_ = os.WriteFile(os.Args[2], _dat, 0644)
 	}
-
-	listenUntilShutdown(s, healthInterval, writeTimeout)
 }
 
 func listenUntilShutdown(s *http.Server, shutdownTimeout time.Duration, writeTimeout time.Duration) {
